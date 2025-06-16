@@ -1,0 +1,255 @@
+# %%
+
+
+# %% [markdown]
+# * Performance
+# * Convenience
+# * Interopearble
+
+# %%
+import numpy as np
+np.__version__
+
+# %%
+l = [1,2,3,4,5]
+
+array = np.array(l)
+
+array
+
+# %%
+t = (1,2,3,4,5)
+
+array_2 = np.array(t)
+
+array_2
+
+array_3 = np.arange(10)
+
+array_3
+
+array_4 = np.arange(0,10,2)
+
+array_4
+
+
+
+# %%
+type(array)
+
+array.shape
+
+array_2d = np.array([[1,2,3],[4,5,26]])
+
+array_2d.shape
+
+
+zeros_array = np.zeros((3,4))
+zeros_array
+
+# %%
+ones_array = np.ones((5,6))
+ones_array
+
+# %%
+np.linspace(0,1,9)
+
+# %%
+full_array = np.full((3,4), 11)
+
+full_array
+
+
+np.eye(7)
+
+np.diag([1,2,3,4,5,6])
+
+# %%
+array1 = np.array([1,2,3,4,5])
+array2 = np.array([6,7,8,9,10])
+
+sum_array = np.add(array1, array2)
+sum_array
+
+np.subtract(array1, array2)
+
+np.multiply(array1, array2)
+
+np.divide(array1, array2)
+
+
+
+
+
+# %%
+A = np.array([[1,2,3],[4,5,6]]) # 2,3
+
+B = np.array([1,2, 3]) # 1,3
+
+C= np.add(A,B)
+
+C
+
+
+# %%
+np.sqrt(B)
+
+np.exp(B)
+
+np.log(B)
+
+np.sum(B)
+
+# %%
+array = np.array([1,2,3,4])
+
+array[2]
+
+array[1]
+
+array[-1]
+
+array_2d = np.array([[1,2,3],[4,5,6],[7,8,9]])
+
+array_2d
+
+#(x,y) = (1,2)
+
+array_2d[1,2]
+
+array_2d[2,2] = 99
+
+array_2d
+
+
+slice_1d = array[1:3]
+
+slice_1d
+
+slice_2d = array_2d[0:2, 1:3]
+
+slice_2d
+
+step_slice = array[::2]
+
+step_slice
+
+negative_slice = array[-4:-1]
+
+negative_slice
+
+
+bool_index = array > 3
+bool_index
+
+
+array[1:3] = [21,31]
+array
+
+fancy_index = array[[0,1,3]]
+fancy_index
+
+fancy_index_2d = array_2d[[0,2],[1,2]]
+fancy_index_2d
+
+
+# %%
+array = np.arange(1,13)
+
+reshaped_array = array.reshape((3,4))
+
+reshaped_array
+
+
+flattened_array = reshaped_array.flatten()
+flattened_array
+
+
+
+array1= np.array([[1,2],[3,4]])
+array2= np.array([[5,6],[7,8]])
+concatenated_array = np.concatenate((array1,array2), axis=0)
+
+concatenated_array
+
+concatenated_array = np.concatenate((array1,array2), axis=1)
+concatenated_array
+
+
+# %%
+split_array = np.split(array, 4)
+split_array
+
+split_array_2d = np.split(reshaped_array, 2, axis=1)
+split_array_2d
+
+# %%
+np.mean(array)
+
+np.median(array)
+
+np.std(array)
+
+np.var(array)
+
+np.min(array), np.max(array)
+
+.np.percentile(array, 85)
+
+
+
+
+
+# %%
+vector_a = np.array([1,2,3])
+vector_b = np.array([4,5,6])
+dot_product = np.dot(vector_a, vector_b)
+
+dot_product
+
+
+
+matrix_a = np.array([[1,2],[3,4]])
+matrix_b = np.array([[5,6],[7,8]])
+product = np.matmul(matrix_a, matrix_b)
+
+product
+
+
+
+# %%
+structured_array = np.array([(1,'Alice',25), (2,'Bob', 30), (3, 'Charlie', 35)], dtype= [('id','i4'), ('name','U10'), ('age','i4')])
+
+structured_array
+
+structured_array['id']
+structured_array['name']
+structured_array['age']
+
+structured_array['age'] = [45, 21, 18]
+
+structured_array
+
+
+sorted_array = np.sort(structured_array, order='age')
+
+sorted_array
+
+
+filtered_array = structured_array[structured_array['age']>20]
+filtered_array
+
+
+
+# %%
+data = [{'id':1, 'name': 'Alice', 'age': 25},
+        {'id':2, 'name': 'Bob', 'age': 35}]
+
+ids = [item['id'] for item in data]
+names = [item['name'] for item in data]
+ages = [item['age'] for item in data]
+
+stru_array_from_dict= np.array(list(zip(ids, names, ages)), dtype=[('id','i4'), ('name', 'U10'), ('age', 'i4')])
+stru_array_from_dict
+
+
